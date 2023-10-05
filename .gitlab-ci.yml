@@ -15,7 +15,7 @@ build_ios:
   before_script:
     - bundle install
   script:
-    - bundle check --path vendor/bundle || bundle install --path vendor/bundle --jobs $(nproc)
+    - bundle check --path vendor/bundle || bundle install --path vendor/bundle --jobs $(sysctl -n hw.physicalcpu)
     - bundle exec fastlane build
   tags: 
     - mus
@@ -26,7 +26,7 @@ beta_ios:
   before_script:
     - bundle install
   script:
-    - bundle check --path vendor/bundle || bundle install --path vendor/bundle --jobs $(nproc)
+    - bundle check --path vendor/bundle || bundle install --path vendor/bundle --jobs $(sysctl -n hw.physicalcpu)
     - bundle exec fastlane beta
   tags: 
     - mus
