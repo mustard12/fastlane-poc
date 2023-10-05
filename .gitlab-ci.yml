@@ -12,6 +12,8 @@ cache:
 build_ios:
   #image: macos-13-xcode-14
   stage: build
+  before_script:
+    - bundle install
   script:
     - bundle check --path vendor/bundle || bundle install --path vendor/bundle --jobs $(nproc)
     - bundle exec fastlane build
@@ -21,6 +23,8 @@ build_ios:
 beta_ios:
   #image: macos-13-xcode-14
   stage: beta
+  before_script:
+    - bundle install
   script:
     - bundle check --path vendor/bundle || bundle install --path vendor/bundle --jobs $(nproc)
     - bundle exec fastlane beta
