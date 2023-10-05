@@ -1,7 +1,7 @@
 app_identifier("com.mergerity.testregistmerge") # The bundle identifier of your app
 apple_id("mus@arbeon.com") # Your Apple Developer Portal username
 
-itc_team_id("122736643") # App Store Connect Team ID
+# itc_team_id("122736643") # App Store Connect Team ID
 team_id("929V98C6AP") # Developer Portal Team ID
 
 # For more information about the Appfile, see:
