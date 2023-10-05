@@ -2,20 +2,22 @@ stages:
   - build
   - beta
 
+variables:
+  LC_ALL: 'en_US.UTF-8'
+  LANG: 'en_US.UTF-8'
+
 cache:
   key:
     files:
       - Gemfile.lock
   paths:
-    - vendor/bundle
+    - vendor
 
 build_ios:
   #image: macos-13-xcode-14
   stage: build
-  before_script:
-    - bundle install
   script:
-    - bundle check --path vendor/bundle || bundle install --path vendor/bundle --jobs $(sysctl -n hw.physicalcpu)
+    - bundle check -| bundle install --jobs $(sysctl -n hw.physicalcpu)
     - bundle exec fastlane build
   tags: 
     - mus
@@ -23,10 +25,8 @@ build_ios:
 beta_ios:
   #image: macos-13-xcode-14
   stage: beta
-  before_script:
-    - bundle install
   script:
-    - bundle check --path vendor/bundle || bundle install --path vendor/bundle --jobs $(sysctl -n hw.physicalcpu)
+    - bundle check -| bundle install --jobs $(sysctl -n hw.physicalcpu)
     - bundle exec fastlane beta
   tags: 
     - mus
