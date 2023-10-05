@@ -1,6 +1,7 @@
 gitlab_project("etc/devops/fastlane-poc")
 
 storage_mode("gitlab_secure_files")
+gitlab_host("https://gitlab.arbeon.com")
 
 type("development") # The default type, can be: appstore, adhoc, enterprise or development
 

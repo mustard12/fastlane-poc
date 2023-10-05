@@ -12,9 +12,8 @@ platform :ios do
     # Download and install the correct signing certificates for the 
     # given build environment, in this case development
     # https://docs.fastlane.tools/actions/match/
-    # sync_code_signing(type: "development")
 
-    sync_code_signing(type: 'development', readonly: is_ci, gitlab_host: 'https://gitlab.arbeon.com')
+    match(type: 'development', readonly: is_ci)
 
     # Build the app with the supplied configuration settings
     # Export method is the same as the match step above
