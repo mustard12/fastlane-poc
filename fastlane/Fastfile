@@ -12,7 +12,7 @@ platform :ios do
     # Download and install the correct signing certificates for the 
     # given build environment, in this case development
     # https://docs.fastlane.tools/actions/match/
-    match(type: 'development', readonly: is_ci)
+    match(type: 'development', readonly: is_ci, gitlab_host: 'https://gitlab.arbeon.com')
 
     # Build the app with the supplied configuration settings
     # Export method is the same as the match step above
@@ -35,7 +35,7 @@ platform :ios do
     # Download and install the correct signing certificates for the 
     # given build environment, in this case appstore
     # https://docs.fastlane.tools/actions/match/
-    match(type: 'appstore', readonly: is_ci)
+    match(type: 'development', readonly: is_ci, gitlab_host: 'https://gitlab.arbeon.com')
 
     # Login to App Store Connect in order to perform actions later
     # in this process. Configuration provided by environment variables added
