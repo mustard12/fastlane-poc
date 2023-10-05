@@ -1,4 +1,5 @@
-gitlab_project("546")
+gitlab_project("etc/devops/fastlane-poc")
+gitlab_host("https://gitlab.arbeon.com")
 
 storage_mode("gitlab_secure_files")
 
