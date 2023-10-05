@@ -17,8 +17,8 @@ platform :ios do
     # Export method is the same as the match step above
     # https://docs.fastlane.tools/actions/build_app/
     build_app(
-      project: "ios demo.xcodeproj",
-      scheme: "ios demo",
+      project: "ios poc.xcodeproj",
+      scheme: "ios poc",
       configuration: "Debug",
       export_method: "development"
     )
@@ -48,7 +48,7 @@ platform :ios do
     # https://docs.fastlane.tools/actions/latest_testflight_build_number/
     increment_build_number(
       build_number: latest_testflight_build_number(initial_build_number: 1) + 1,
-      xcodeproj: "ios demo.xcodeproj"
+      xcodeproj: "ios poc.xcodeproj"
     )
 
     # Build the app with the supplied configuration settings
@@ -56,8 +56,8 @@ platform :ios do
     # Note: the difference between `appstore` and `app-store` is intentional
     # https://docs.fastlane.tools/actions/build_app/
     build_app(
-      project: "ios demo.xcodeproj",
-      scheme: "ios demo",
+      project: "ios poc.xcodeproj",
+      scheme: "ios poc",
       configuration: "Release",
       export_method: "app-store"
     )
@@ -66,6 +66,23 @@ platform :ios do
     # API key above, and the app configuration in the Appfile
     # https://docs.fastlane.tools/actions/upload_to_testflight/
     upload_to_testflight
+
+    post_to_slack(scheme: scheme, destination: "TestFlight")
+
+  end
+  
+  private_lane :post_to_slack do |options|
+    ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+    scheme      = options[:scheme]
+    version     = get_version_number(xcodeproj: "poc.xcodeproj")
+    build       = get_build_number(xcodeproj: "poc.xcodeproj")
+    environment = scheme.upcase
+    destination = options[:destination]
+
+    slack(
+      message: "<!here|here>: New :ios: *#{version}* (#{build}) running `#{environment}` has been submitted to *#{destination}*  :rocket:",
+    )
+
   end
 end
 
