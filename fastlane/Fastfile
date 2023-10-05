@@ -76,8 +76,8 @@ platform :ios do
   private_lane :post_to_slack do |options|
     ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
     scheme      = options[:scheme]
-    version     = get_version_number(xcodeproj: "poc.xcodeproj")
-    build       = get_build_number(xcodeproj: "poc.xcodeproj")
+    version     = get_version_number(xcodeproj: "demo.xcodeproj")
+    build       = get_build_number(xcodeproj: "demo.xcodeproj")
     environment = scheme.upcase
     destination = options[:destination]
 
