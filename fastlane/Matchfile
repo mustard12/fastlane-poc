@@ -1,4 +1,4 @@
-gitlab_project("gitlab-org/incubation-engineering/mobile-devops/demo-projects/ios-demo")
+gitlab_project("546")
 
 storage_mode("gitlab_secure_files")
 
