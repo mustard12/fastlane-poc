@@ -61,7 +61,7 @@ platform :ios do
       project: "ios demo.xcodeproj",
       scheme: "ios demo",
       configuration: "Release",
-      export_method: "appstore"
+      export_method: "app-store"
     )
 
     # Upload the newly created build to Test Flight using the App Store Connect
