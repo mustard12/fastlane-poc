@@ -19,8 +19,8 @@ platform :ios do
     # Export method is the same as the match step above
     # https://docs.fastlane.tools/actions/build_app/
     build_app(
-      project: "ios poc.xcodeproj",
-      scheme: "ios poc",
+      project: "ios demo.xcodeproj",
+      scheme: "ios demo",
       configuration: "Debug",
       export_method: "development"
     )
@@ -50,7 +50,7 @@ platform :ios do
     # https://docs.fastlane.tools/actions/latest_testflight_build_number/
     increment_build_number(
       build_number: latest_testflight_build_number(initial_build_number: 1) + 1,
-      xcodeproj: "ios poc.xcodeproj"
+      xcodeproj: "ios demo.xcodeproj"
     )
 
     # Build the app with the supplied configuration settings
@@ -58,8 +58,8 @@ platform :ios do
     # Note: the difference between `appstore` and `app-store` is intentional
     # https://docs.fastlane.tools/actions/build_app/
     build_app(
-      project: "ios poc.xcodeproj",
-      scheme: "ios poc",
+      project: "ios demo.xcodeproj",
+      scheme: "ios demo",
       configuration: "Release",
       export_method: "app-store"
     )
