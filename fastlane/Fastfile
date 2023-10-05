@@ -69,22 +69,18 @@ platform :ios do
     # https://docs.fastlane.tools/actions/upload_to_testflight/
     upload_to_testflight
     
-    scheme = options[:scheme]
-
     post_to_slack(scheme: scheme, destination: "TestFlight")
 
   end
   
   private_lane :post_to_slack do |options|
     ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
-    scheme      = options[:scheme]
     version     = get_version_number(xcodeproj: "demo.xcodeproj")
     build       = get_build_number(xcodeproj: "demo.xcodeproj")
-    environment = scheme.upcase
     destination = options[:destination]
 
     slack(
-      message: "<!here|here>: New :ios: *#{version}* (#{build}) running `#{environment}` has been submitted to *#{destination}*  :rocket:",
+      message: "<!here|here>: New :ios: *#{version}* (#{build}) running Staging has been submitted to *#{destination}*  :rocket:",
     )
 
   end
