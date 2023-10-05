@@ -11,13 +11,13 @@ cache:
     files:
       - Gemfile.lock
   paths:
-    - vendor
+    - vendor/bundle
 
 build_ios:
   #image: macos-13-xcode-14
   stage: build
   script:
-    - bundle check -| bundle install --jobs $(sysctl -n hw.physicalcpu)
+    - bundle check --path vendor/bundle || bundle install --path vendor/bundle --jobs $(sysctl -n hw.physicalcpu)
     - bundle exec fastlane build
   tags: 
     - mus
@@ -26,7 +26,7 @@ beta_ios:
   #image: macos-13-xcode-14
   stage: beta
   script:
-    - bundle check -| bundle install --jobs $(sysctl -n hw.physicalcpu)
+    - bundle check --path vendor/bundle || bundle install --path vendor/bundle --jobs $(sysctl -n hw.physicalcpu)
     - bundle exec fastlane beta
   tags: 
     - mus
