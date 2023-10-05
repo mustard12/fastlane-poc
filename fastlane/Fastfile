@@ -68,6 +68,8 @@ platform :ios do
     # API key above, and the app configuration in the Appfile
     # https://docs.fastlane.tools/actions/upload_to_testflight/
     upload_to_testflight
+    
+    scheme = options[:scheme]
 
     post_to_slack(scheme: scheme, destination: "TestFlight")
 
